@@ -1,0 +1,148 @@
+
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+{extend name="admin@public/base"/}
+{block name="main-content"}
+        <div class="page-content">
+            <link rel="stylesheet" type="text/css" media="all" href="__PUBLIC__/sldate/daterangepicker-bs3.css" />
+            <form name="admin_list_sea" class="form-search form-horizontal" id="list-filter" method="post" action="{:url('admin/Contents/law_list')}">
+                <div class="row maintop">
+                    <!--筛选框-->
+                    <div class="col-xs-8 col-sm-2  margintop5">
+                        <select name="category" class="ajax_change">
+						<option value="">按法律标签</option>
+						{foreach name="law_category_list" item="v"}
+							<option value="{$v.category_id}" {if condition="$category_check eq $v['category_id']"}selected{/if}>{$v.name}</option>
+						{/foreach}
+					</select>
+                        </div>
+                    <!--搜索框-->
+                        <div class="col-xs-12 col-sm-4  btn-sespan">
+                        <div class="input-group">
+
+						<input type="text" name="key" id="key" class="form-control search-query admin_sea" value="{$keyy}" placeholder="来吧！一定有你想要的" />
+									<span class="input-group-btn">
+										<button type="submit" class="btn btn-xs btm-input btn-purple ajax-search-form">
+											<span class="ace-icon fa fa-search icon-on-right bigger-110"></span>
+											搜索
+										</button>
+									</span>
+                                                
+
+					</div>
+                                        <label>
+                                                <input id="t_key" name="keyType" type="radio" value="t_key" checked class="ace" />
+                                                <span class="lbl"> 按标题关键字检索 </span>&nbsp;&nbsp;
+                                        </label>
+                                                <label>
+                                                <input id="b_key" name="keyType" type="radio" value="b_key"  class="ace" />
+                                                <span class="lbl"> 按正文检索 </span>&nbsp;&nbsp;
+                                        </label>
+                        </div> 
+
+                        <div class="input-group-btn">
+					<a href="{:url('admin/Contents/law_list')}">
+						<button type="button" class="btn btn-xs all-btn btn-purple ajax-display-all">
+							<span class="ace-icon fa fa-globe icon-on-right bigger-110"></span>
+							显示全部
+						</button>
+					</a>
+				</div>
+                        <div class="input-group-btn">
+					<a href="{:url('admin/Contents/law_add')}">
+						<button type="button" class="btn btn-xs all-btn btn-purple">
+							+法律录入
+						</button>
+					</a>
+				</div> 
+
+                </div>
+            </form>
+            
+            <div class="row">
+                <div class="col-xs-12">
+                    <div>
+                        <form id="alldel" name="alldel" method="post" action="{:url('admin/Contents/law_alldel')}" >
+                            <input name="p" id="p" value="{:input('p',1)}" type="hidden" />
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dynamic-table">
+                                    <thead>
+                                        <tr>
+                                                <th class="hidden-xs center">
+                                                        <label class="pos-rel">
+                                                                <input type="checkbox" class="ace"  id='chkAll' onclick='CheckAll(this.form)' value="全选"/>
+                                                                <span class="lbl"></span>															</label>											</th>
+                                                <th>法律标签</th>
+                                                <th>法律标题</th>
+                                                <th class="hidden-xs">关键字</th>
+                                                <th style="border-right:#CCC solid 1px;">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="ajax-data">
+                                        {include file="contents/ajax_law_list"/}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+ <!-- 显示预览模态框（Modal） -->
+        <div class="modal fade in" id="myModaledit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-backdrop fade in" id="gbbb" style="height: 100%;"></div>
+                <input type="hidden" name="id" id="edit_id" value="" />
+                <div class="modal-dialog" style="width: 100%; height: 100%">            
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" id="gb"  data-dismiss="modal"
+                                            aria-hidden="true">×
+                            </button>
+			</div>                    
+                        <div class="modal-body">                        
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-1">
+                                            </div>          
+				<div class="col-md-6">
+                                    <div class="page-header">
+           				<h1 id="edit_law_title">
+					</h1>
+                                            <div class="row">
+                                            <div class="col-md-12">
+                                            <div class="col-md-9">
+                                            <h4 id="edit_key_word"></h6>
+                                            </div>
+                                            <div class="col-md-3">
+                                          
+                                            </div>
+                                            </div>
+                                            </div>
+                                    </div>
+                                    <div  id="edit_law_detail">
+                                                            </div>
+                                            <div class="col-md-1">
+                                        </div>
+                                        </div>    
+                                    </div>  
+                                    </div>
+                            </div>   
+                        </div>
+                    </div>                     
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default"  id="gbb" >
+                                    关闭
+                            </button>
+                        </div>                       
+                    </div><!-- /.modal-content -->                  
+                </div><!-- /.modal-dialog -->              
+        </div>
+        
+{/block}

@@ -1,0 +1,28 @@
+[ 2017-04-07T15:40:14+08:00 ] ::1 ::1 GET /YFCMF/thinkphp/start.php
+[ log ] localhost/YFCMF/thinkphp/start.php [运行时间：0.324033s][吞吐率：3.09req/s] [内存消耗：2,241.66kb] [文件加载：40]
+[ info ] [ LANG ] E:\workspace_php\YFCMF\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] E:/workspace_php/YFCMF/thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'pgv_pvi=8091370496; Hm_lvt_5abe8bad32d72cd7db258be5534e6596=1491359220; pgv_si=s8705587200; think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
